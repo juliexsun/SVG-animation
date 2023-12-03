@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type = "text/css" href="main.css">
+
+</head>
+<body>
+    <div class="line-container">
+        <svg viewBox="0 0 297 1965" fill="none" preserveAspectRatio="xMidYMax meet">
+            <path d="M162 0.5V978C177.833 978.167 213 981.8 227 995C244.5 1011.5 269.5 1031 276 1044C282.5 1057 275.5 1061 242 1091.5C208.5 1122 175 1124.5 162 1120M162 1120C149 1115.5 90 1085 87 1077.5C84 1070 49 1102.5 36 1097C23 1091.5 62.5 1057 57 1050.5C52.6 1045.3 41.1667 1015 36 1000.5M162 1120V1803C152.667 1816 132 1845.7 124 1860.5C114 1879 105.5 1876 105.5 1898.5C105.5 1921 104.5 1918 101 1938.5C97.5 1959 71 1962.5 63.5 1961C56 1959.5 18.5 1936.5 17.5 1929C16.5 1921.5 1.49012e-05 1913 5.50001 1894C11 1875 7 1877 23 1860.5C35.8 1847.3 55.3333 1845.67 63.5 1846.5C70.1667 1842.5 83.7 1832.6 84.5 1825C85.5 1815.5 83.5 1808 79.5 1803C76.3 1799 62.8333 1791 56.5 1787.5" stroke="#F20F0F" stroke-width="20"/>
+        </svg>             
+    </div>
+
+    <section class="one">
+        <h1 class="scroll" data-rate=".4" data-direction="vertical">scroll</h1>
+    </section>
+
+    <section class="two">
+        <h1 class="scroll" data-rate=".2" data-direction="vertical">scroll!</h1>
+        <p>scroll</p>
+    </section>
+
+    <script>
+        let path = document.querySelector('path')
+        let pathLength = path.getTotalLength()
+
+        path.style.strokeDasharray = pathLength + ' ' + pathLength;
+
+        path.style.strokeDashOffset = pathLength;
+
+        window.addEventListener('scroll', () => {
+            var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+            var drawLength = pathLength * scrollPercentage;
+            path.style.strokeDashoffset = pathLength - drawLength;
+        })
+    </script>
+</body>
+</html>
+
+    
